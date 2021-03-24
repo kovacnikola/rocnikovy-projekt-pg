@@ -1,0 +1,23 @@
+{
+    "development": {
+        "username": "postgres",
+        "password": "admin",
+        "database": "rocnikovy-projekt-pg",
+        "host": "127.0.0.1",
+        "dialect": "postgres",
+        "timezone": "+02:00"
+    },
+    "production": {
+        "username": "",
+        "password": "",
+        "database": "",
+        "host": "",
+        "dialect": "postgres",
+        "dialectOptions": {
+            "ssl": {
+                "rejectUnauthorized": false
+            }
+        },
+        "timezone": "+02:00"
+    }
+}
