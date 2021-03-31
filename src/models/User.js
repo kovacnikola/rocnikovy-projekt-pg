@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
                 primaryKey: true,
             },
             sub: {
-                type: DataTypes.BIGINT,
+                type: DataTypes.NUMERIC,
                 unique: true,
             },
             displayName: DataTypes.STRING,

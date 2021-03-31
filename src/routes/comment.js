@@ -8,14 +8,14 @@ router.post(
     '/',
     asyncHandler(isSignedIn),
     asyncHandler(async (req, res) => {
-        let { text, snippet, author } = req.body.data;
+        let { text, snippet, author } = req.body;
         if ((text, snippet, author)) {
             Comment.create({
                 text,
                 snippet,
                 author,
             }).then((comment) => {
-                return comment;
+                return res.send(comment);
             });
         } else {
             return res.sendStatus(400);

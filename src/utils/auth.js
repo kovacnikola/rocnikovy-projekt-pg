@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler');
 const { OAuth2Client } = require('google-auth-library');
 const client = new OAuth2Client();
+const { User } = require('../models/');
 
 const verifyToken = async (token) => {
     const ticket = await client.verifyIdToken({

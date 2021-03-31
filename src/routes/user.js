@@ -8,7 +8,7 @@ router.get(
     '/',
     asyncHandler(isSignedIn),
     asyncHandler(async (req, res) => {
-        return await User.findAll();
+        return res.send(await User.findAll());
     })
 );
 
@@ -16,7 +16,7 @@ router.get(
     '/:id/',
     asyncHandler(isSignedIn),
     asyncHandler(async (req, res) => {
-        return await User.findOne({
+        return res.send(await User.findOne({
             where: {
                 id: req.params.id,
             },
@@ -30,7 +30,7 @@ router.get(
                     as: Comment.author,
                 },
             ],
-        });
+        }));
     })
 );
 

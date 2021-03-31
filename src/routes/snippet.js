@@ -8,7 +8,7 @@ router.get(
     '/',
     asyncHandler(isSignedIn),
     asyncHandler(async (req, res) => {
-        return await Snippet.findAll();
+        return res.send(await Snippet.findAll());
     })
 );
 
@@ -16,7 +16,7 @@ router.get(
     '/:id/',
     asyncHandler(isSignedIn),
     asyncHandler(async (req, res) => {
-        return await Snippet.findOne({
+        return res.send(await Snippet.findOne({
             where: {
                 id: req.params.id,
             },
@@ -26,7 +26,7 @@ router.get(
                     as: Comment.author,
                 },
             ],
-        });
+        }));
     })
 );
 
@@ -34,7 +34,7 @@ router.post(
     '/',
     asyncHandler(isSignedIn),
     asyncHandler(async (req, res) => {
-        let { description, filename, code, author } = req.body.data;
+        let { description, filename, code, author } = req.body;
         if ((description, filename, code, author)) {
             Snippet.create({
                 description,
@@ -42,7 +42,7 @@ router.post(
                 code,
                 author,
             }).then((snippet) => {
-                return snippet;
+                return res.send(snippet);
             });
         } else {
             return res.sendStatus(400);
